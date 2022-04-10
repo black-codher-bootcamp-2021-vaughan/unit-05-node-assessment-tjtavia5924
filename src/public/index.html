@@ -1,9 +1,125 @@
 <html>
   <head>
-    <title>Todo List API</title>
+    <title>Welcome to Tavia's Todo List API</title>
+    <link rel="stylesheet" href="">
+    <img src="./images/favicon.ico" alt="icon">
+    <img src="./images/logo.png" alt="logo">
+
   </head>
   <body>
     <h1>Todo List API</h1>
     <p>....</p>
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>URL</th>
+        <th>Description</th>
+        <th>Example URL</th>
+        <th>Request Body</th>
+        <th>Status Code</th>
+        <th>Response Body</th>
+      </tr>
+      <tr>
+        <td>'GET'</td>
+        <td>'/'</td>
+        <td>Returns a static HTML file `index.html` containing a `favicon.ico`, `logo.png` and reference to an external stylesheet `styles.css`.</td>
+        <td>`http://localhost:8080/`</td>
+        <td></td>
+        <td>200</td>
+        <td>HTML page</td>
+      </tr>
+      <tr>
+        <td>` GET` </td>
+        <td>`/todos`</td>
+        <td>Return all todos from the `todos.json` file</td>
+        <td>`http://localhost:8080/todos` </td>
+        <td></td>
+        <td>200 </td>
+        <td>`[{"id":"01507581-9d12-4c3a-bb60-19d539a11189","name":"Learn to use Adobe Photoshop","created":"2021-11-20T18:25:43.511Z","due":"2021-12-23T23:05:03.352Z","completed":false}, {...}, {...} ]`</td>
+      </tr>
+      <tr>
+        <td>`GET` </td>
+        <td>`/todos/:id` |</td>
+        <td>Return a specific todo with the corresponding `id'</td>
+        <td>`http://localhost:8080/todos/01507581-9d12-4c3a-bb60-19d539a11189`</td>
+        <td></td>
+        <td>200 or 404 if id not found </td>
+        <td>`{"id":"01507581-9d12-4c3a-bb60-19d539a11189","name":"Learn to use Adobe Photoshop","created":"2021-11-20T18:25:43.511Z","due":"2021-12-23T23:05:03.352Z","completed":false}`</td>
+      </tr>
+      <tr>
+        <td>`GET`</td>
+        <td>`/todos/overdue`</td>
+        <td>Return a list of __overdue__ todos or an empty list if there are no overdue todos. Todos can be filtered based on their `due` date attribute </td>
+        <td>`http://localhost:8080/todos/overdue`</td>
+        <td></td>
+        <td> 200</td>
+        <td>`[]` or `[{todo1},{todo2},{...}]`</td>
+      </tr>
+      <tr>
+        <td>`GET` </td>
+        <td>`/todos/completed`</td>
+        <td>Return a list of __completed__ todos or an empty list, if no todos have been completed. Todos can be filtered based on their `due` date attribute.</td>
+        <td>`http://localhost:8080/todos/completed`</td>
+        <td></td>
+        <td>200</td>
+        <td>`[]` or `[{todo1},{todo2},{...}]`</td>
+      </tr>
+      <tr>
+        <td>`POST`*</td>
+        <td> `/todos` </td>
+        <td>Add a new todo to the todo list</td>
+        <td>`http://localhost:8080/todos` </td>
+        <td>`{'name' : 'Buy oatmilk x 2', 'due':'2021-11-20T18:25:43.511Z'}`</td>
+        <td>201 (Created), 400 if incorrect data submitted</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>`PATCH`*</td>
+        <td>`/todos/:id`</td>
+        <td>Edit the `name` and/or `due` date attributes of a todo.</td>
+        <td>`http://localhost:8080/todos/:9d127581-0150-4c3a-bb60-1118919d539a`</td>
+        <td> `{"name":"Buy 3 Cartons of Oat Milk","due":"2021-12-23T18:25:43.511Z"}`</td>
+        <td>200 (OK) or 400 (Bad Request) if invalid id or request attributes</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>`POST`*</td>
+        <td>`/todos/:id/complete`</td>
+        <td> Update todo, set attribute complete to `true`</td>
+        <td>`http://localhost:8080/todos/01507581-9d12-4c3a-bb60-19d539a11189/complete` </td>
+        <td></td>
+        <td>200 (OK) or 400 (Bad Request) if invalid id</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>`POST`* </td>
+        <td>`/todos/:id/undo` </td>
+        <td>Update todo, set attribute complete to `false`</td>
+        <td>`http://localhost:8080/todos/01507581-9d12-4c3a-bb60-19d539a11189/undo`</td>
+        <td></td>
+        <td>200 (OK) or 400 (Bad Request) if invalid id </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td> `DELETE`*</td>
+        <td>`todos/:id` </td>
+        <td>Deletes a todo by `id`</td>
+        <td>`http://localhost:8080/todos/01507581-9d12-4c3a-bb60-19d539a11189`</td>
+        <td></td>
+        <td>200 (OK) or 400 (Bad Request) if invalid id</td>
+        <td></td>
+      </tr>
+      
+
+
+
+
+    </table>
+
+
+
+
+
+
   </body>
 </html>
